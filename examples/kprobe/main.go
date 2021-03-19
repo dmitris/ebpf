@@ -1,5 +1,5 @@
 // This program demonstrates how to attach an eBPF program to a kprobe.
-// The program will be attached to the __x64_sys_execve syscall and print out
+// The program will be attached to the sys_execve syscall and print out
 // the number of times it has been called every second.
 package main
 
@@ -40,8 +40,8 @@ func main() {
 	}
 	defer objs.Close()
 
-	// Create and attach __x64_sys_execve kprobe
-	efd, err := openKProbe("__x64_sys_execve", uint32(objs.KprobeExecve.FD()))
+	// Create and attach sys_execve kprobe
+	efd, err := openKProbe("sys_execve", uint32(objs.KprobeExecve.FD()))
 	if err != nil {
 		log.Fatalf("create and attach KProbe: %v", err)
 
@@ -56,7 +56,7 @@ func main() {
 			if err := objs.KprobeMap.Lookup(mapKey, &value); err != nil {
 				log.Fatalf("error while reading map: %v", err)
 			}
-			log.Printf("__x64_sys_execve called %d times\n", value)
+			log.Printf("sys_execve called %d times\n", value)
 		case <-stopper:
 			return
 		}
