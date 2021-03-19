@@ -5,11 +5,11 @@ import (
 
 	"github.com/cilium/ebpf"
 	"github.com/cilium/ebpf/asm"
-	"github.com/cilium/ebpf/internal/testutils"
+	// "github.com/cilium/ebpf/internal/testutils"
 )
 
 func TestRawTracepoint(t *testing.T) {
-	testutils.SkipOnOldKernel(t, "4.17", "BPF_RAW_TRACEPOINT API")
+	// testutils.SkipOnOldKernel(t, "4.17", "BPF_RAW_TRACEPOINT API")
 
 	prog, err := ebpf.NewProgram(&ebpf.ProgramSpec{
 		Type:       ebpf.RawTracepoint,
@@ -39,7 +39,7 @@ func TestRawTracepoint(t *testing.T) {
 }
 
 func TestRawTracepoint_writable(t *testing.T) {
-	testutils.SkipOnOldKernel(t, "5.2", "BPF_RAW_TRACEPOINT_WRITABLE API")
+	// testutils.SkipOnOldKernel(t, "5.2", "BPF_RAW_TRACEPOINT_WRITABLE API")
 
 	prog, err := ebpf.NewProgram(&ebpf.ProgramSpec{
 		Type:       ebpf.RawTracepointWritable,

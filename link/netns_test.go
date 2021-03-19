@@ -6,11 +6,11 @@ import (
 
 	"github.com/cilium/ebpf"
 	"github.com/cilium/ebpf/asm"
-	"github.com/cilium/ebpf/internal/testutils"
+	// "github.com/cilium/ebpf/internal/testutils"
 )
 
 func TestSkLookup(t *testing.T) {
-	testutils.SkipOnOldKernel(t, "5.8", "sk_lookup program")
+	// testutils.SkipOnOldKernel(t, "5.8", "sk_lookup program")
 
 	prog, err := createSkLookupProgram()
 	if err != nil {
